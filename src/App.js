@@ -7,18 +7,15 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 import { addItem } from './actions/addItem'
+import { removeItem } from './actions/removeItem';
 
 const App = (props) => {
-
-  // const removeFeature = item => {
-  //   // dispatch an action here to remove an item
-  // };
 
   return (
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+        <AddedFeatures car={props.car} removeItem={props.removeItem} />
       </div>
       <div className="box">
         <AdditionalFeatures additionalFeatures={props.additionalFeatures} addItem={props.addItem} />
@@ -36,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addItem })(App);
+export default connect(mapStateToProps, { addItem, removeItem })(App);

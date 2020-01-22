@@ -17,6 +17,13 @@ const initialState = {
   ]
 }
 
+const removeItem = featureList => {
+  const notSelected = featureList.filter(item => {
+    return item.id
+  })
+  return notSelected
+}
+
 export const reducer = (state = initialState, action) => {
   console.log('reducer state', state)
   console.log('reducer payload', action.payload)
@@ -35,7 +42,13 @@ export const reducer = (state = initialState, action) => {
       }
 
     case 'REMOVE_ITEM':
-      return state
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [removeItem(state.car.features)]
+        }
+      }
 
     default:
       return state
