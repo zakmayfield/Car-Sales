@@ -1,7 +1,7 @@
-export const addItem = id => {
-  console.log('add item clicked - id: ', id)
+export const addItem = item => {
+  // console.log('add item clicked - item: ', item)
   return {
     type: 'ADD_ITEM',
-    payload: id
+    payload: item
   }
 }

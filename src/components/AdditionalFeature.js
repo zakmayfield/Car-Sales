@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { addItem } from '../actions/addItem'
-
 const AdditionalFeature = props => {
   return (
     <li>
@@ -9,7 +7,7 @@ const AdditionalFeature = props => {
       <button
         className="button"
         onClick={() => {
-          addItem(props.feature.id)
+          props.addItem(props.feature)
         }} >Add</button>
 
       {props.feature.name} (+{props.feature.price})
