@@ -17,13 +17,6 @@ const initialState = {
   ]
 }
 
-const removeItem = featureList => {
-  const notSelected = featureList.filter(item => {
-    return item.id
-  })
-  return notSelected
-}
-
 export const reducer = (state = initialState, action) => {
   console.log('reducer state', state)
   console.log('reducer payload', action.payload)
@@ -46,9 +39,23 @@ export const reducer = (state = initialState, action) => {
         ...state,
         car: {
           ...state.car,
-          features: [removeItem(state.car.features)]
+          features: [
+            state.car.features.filter(item => item.id !== action.payload.id)
+          ]
         }
       }
+
+
+
+    // return {
+    //   ...state,
+    //   car: {
+    //     ...state.car,
+    //     features: [
+    //       removeItem(action.payload.id)
+    //     ]
+    //   }
+    // }
 
     default:
       return state
